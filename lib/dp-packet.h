@@ -23,6 +23,7 @@
 #include "packets.h"
 #include "util.h"
 #include "netdev-dpdk.h"
+#include "nf-mbuf.h"
 
 #ifdef  __cplusplus
 extern "C" {
@@ -42,6 +43,7 @@ enum OVS_PACKED_ENUM dp_packet_source {
 struct dp_packet {
 #ifdef DPDK_NETDEV
     struct rte_mbuf mbuf;       /* DPDK mbuf */
+    struct nf_mbuf nfmbuf;      /* NoFutz mbuf */
 #else
     void *base_;                /* First byte of allocated space. */
     uint16_t allocated_;        /* Number of bytes allocated. */

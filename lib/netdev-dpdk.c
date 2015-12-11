@@ -53,6 +53,7 @@
 #include "rte_config.h"
 #include "rte_mbuf.h"
 #include "rte_virtio_net.h"
+#include "nf-mbuf.h"
 
 VLOG_DEFINE_THIS_MODULE(dpdk);
 static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(5, 20);
@@ -74,6 +75,7 @@ static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(5, 20);
                               + RTE_PKTMBUF_HEADROOM)
 #define MBUF_SIZE_DRIVER     (2048                       \
                               + sizeof (struct rte_mbuf) \
+                              + sizeof (struct nf_mbuf) \
                               + RTE_PKTMBUF_HEADROOM)
 #define MBUF_SIZE(mtu)       MAX(MBUF_SIZE_MTU(mtu), MBUF_SIZE_DRIVER)
 
